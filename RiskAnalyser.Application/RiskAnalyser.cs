@@ -28,19 +28,35 @@ namespace RiskAnalyser.Application
         public List<Bet> GetUnSettledBetsFromUnusualCustomers(List<Customer> customers)
         {
             var riskyBets = new List<Bet>();
+
             return null;
         }
 
         public List<Bet> GetHigherStakeBets(List<Customer> customers, int stakeRate)
         {
             var riskyBets = new List<Bet>();
-            return null;
+
+            var rule = new HigherThanAverageStake();
+
+            foreach (var customer in customers)
+            {
+                riskyBets.AddRange(rule.IdentifyBets(customer, stakeRate));
+            }
+
+            return riskyBets;
         }
 
         public List<Bet> GetBigWinBets(List<Customer> customers, int winMargin)
         {
             var riskyBets = new List<Bet>();
-            return null;
+
+            var rule = new HigherToWinAmount();
+
+            foreach (var customer in customers)
+            {
+                riskyBets.AddRange(rule.IdentifyBets(customer, winMargin));
+            }
+            return riskyBets;
         }
     }
 }

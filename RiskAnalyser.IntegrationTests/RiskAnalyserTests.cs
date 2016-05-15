@@ -44,6 +44,8 @@ namespace RiskAnalyser.IntegrationTests
 
             var unusualCustomers = sut.GetUnusualCustomers(customers);
 
+            Assert.True(unusualCustomers.Count > 0);
+
             foreach (var unusualCustomer in unusualCustomers)
             {
                 var winningBets = Convert.ToDouble(unusualCustomer.SettledBets.Select(b => (b.Win > 0)).Count());
@@ -118,6 +120,9 @@ namespace RiskAnalyser.IntegrationTests
             Application.RiskAnalyser sut = new Application.RiskAnalyser();
 
             var riskyBets = sut.GetUnSettledBetsFromUnusualCustomers(customers);
+
+            Assert.True(riskyBets.Count > 0);
+
             foreach (var riskyBet in riskyBets)
             {
                 //In this test case, only customer id 1 is unusual customer.
@@ -194,6 +199,8 @@ namespace RiskAnalyser.IntegrationTests
 
             var riskyBets = sut.GetHigherStakeBets(customers, stakeRate);
 
+            Assert.True(riskyBets.Count > 0);
+
             foreach (var riskyBet in riskyBets)
             {
                 //In this test case, only customer id 1 is unusual customer.
@@ -221,7 +228,7 @@ namespace RiskAnalyser.IntegrationTests
                 ParticipantId = 1,
                 CustomerId = 1,
                 EventId = 1,
-                Stake = 30,
+                Stake = 31,
                 ToWin = 0
             };
 
@@ -269,6 +276,8 @@ namespace RiskAnalyser.IntegrationTests
             var stakeRate = 30;
 
             var riskyBets = sut.GetHigherStakeBets(customers, stakeRate);
+
+            Assert.True(riskyBets.Count > 0);
 
             foreach (var riskyBet in riskyBets)
             {
@@ -326,7 +335,7 @@ namespace RiskAnalyser.IntegrationTests
                 CustomerId = 2,
                 EventId = 1,
                 Stake = 1,
-                ToWin = 1000
+                ToWin = 1001
             };
 
             var sbets2 = new List<Bet>();
@@ -345,6 +354,8 @@ namespace RiskAnalyser.IntegrationTests
             var winMargin = 1000;
 
             var riskyBets = sut.GetBigWinBets(customers, winMargin);
+
+            Assert.True(riskyBets.Count > 0);
 
             foreach (var riskyBet in riskyBets)
             {
