@@ -29,7 +29,18 @@ namespace RiskAnalyser.Application
         {
             var riskyBets = new List<Bet>();
 
-            return null;
+            ICustomerRule rule = new UnusualCustomerRule();
+
+            var unusalCustomers = new List<Customer>();
+            foreach (var customer in customers)
+            {
+                if (rule.IsTrue(customer))
+                {
+                    riskyBets.AddRange(customer.UnSettledBets);
+                }
+            }            
+            
+            return riskyBets;
         }
 
         public List<Bet> GetHigherStakeBets(List<Customer> customers, int stakeRate)

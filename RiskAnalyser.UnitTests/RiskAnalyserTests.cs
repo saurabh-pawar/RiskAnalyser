@@ -18,7 +18,7 @@ namespace RiskAnalyser.UnitTests
         {
             Application.RiskAnalyser sut = new Application.RiskAnalyser();
 
-            var customers = sut.GetUnusualCustomers(It.IsAny<List<Customer>>());
+            var customers = sut.GetUnusualCustomers(new List<Customer>());
 
             Assert.True(typeof(List<Customer>) == customers.GetType());
         }
@@ -28,7 +28,7 @@ namespace RiskAnalyser.UnitTests
         {
             Application.RiskAnalyser sut = new Application.RiskAnalyser();
 
-            var bets = sut.GetUnSettledBetsFromUnusualCustomers(It.IsAny<List<Customer>>());
+            var bets = sut.GetUnSettledBetsFromUnusualCustomers(new List<Customer>());
 
             Assert.True(typeof(List<Bet>) == bets.GetType());
         }
@@ -38,7 +38,7 @@ namespace RiskAnalyser.UnitTests
         {
             Application.RiskAnalyser sut = new Application.RiskAnalyser();
 
-            var bets = sut.GetHigherStakeBets(It.IsAny<List<Customer>>(),It.IsAny<int>());
+            var bets = sut.GetHigherStakeBets(new List<Customer>(),It.IsAny<int>());
 
             Assert.True(typeof(List<Bet>) == bets.GetType());
         }
@@ -48,7 +48,7 @@ namespace RiskAnalyser.UnitTests
         {
             Application.RiskAnalyser sut = new Application.RiskAnalyser();
 
-            var bets = sut.GetBigWinBets(It.IsAny<List<Customer>>(),It.IsAny<int>());
+            var bets = sut.GetBigWinBets(new List<Customer>(), It.IsAny<int>());
 
             Assert.True(typeof(List<Bet>) == bets.GetType());
         }
