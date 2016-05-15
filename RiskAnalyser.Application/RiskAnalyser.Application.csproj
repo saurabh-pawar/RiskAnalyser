@@ -47,6 +47,8 @@
     <Compile Include="Repositories\CsvCustomerRepository.cs" />
     <Compile Include="Repositories\ICustomerRepository.cs" />
     <Compile Include="RiskAnalyser.cs" />
+    <Compile Include="RiskRules\ICustomerRule.cs" />
+    <Compile Include="RiskRules\UnusualCustomerRule.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

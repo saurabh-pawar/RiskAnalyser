@@ -46,7 +46,7 @@ namespace RiskAnalyser.IntegrationTests
 
             foreach (var unusualCustomer in unusualCustomers)
             {
-                var winningBets = Convert.ToDouble(unusualCustomer.SettledBets.Select(b => (b.Win > 0)));
+                var winningBets = Convert.ToDouble(unusualCustomer.SettledBets.Select(b => (b.Win > 0)).Count());
                 var totalBets = Convert.ToDouble(unusualCustomer.SettledBets.Count);
                 var winPercent = winningBets / totalBets * 100.0;
                 Assert.True(winPercent > 60.0);
