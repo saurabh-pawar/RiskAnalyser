@@ -5,6 +5,6 @@ namespace RiskAnalyser.Application.Repositories
 {
     public interface ICustomerRepository
     {
-        List<Customer> GetAllCustomers();
+        List<Customer> GetAllCustomers(string settledDataSource, string unSettledDataSource);
     }
 }
